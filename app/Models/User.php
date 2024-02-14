@@ -22,11 +22,7 @@ class User extends Authenticatable
         "Vendedor",
         "Cliente"
     ];
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'name',
         "lastname",
@@ -39,25 +35,23 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = ["photo_url"];
+
+    public function getPhotoUrlAttribute()
+    {
+
+        if ($this->photo == null) return asset("storage/app/public/img/user.png");
+        return asset("storage/app/public/img_users/" . $this->photo);
+    }
 
     public function businesses()
     {
