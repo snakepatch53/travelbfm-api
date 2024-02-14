@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +18,23 @@ class ProductController extends Controller
         $includes = [];
         if ($request->query('includeCategory')) $includes[] = 'category';
         if ($request->query('includeProductCarts')) $includes[] = 'productCarts';
+
+        $data = [];
+
+        // Restringimos el acceso dependiendo del rol del usuario
+        // if (Auth::user()->role == "Vendedor") {
+        //     $data = Product::where('category_id', function ($query) {
+        //         $query->select('id')
+        //             ->from('categories')
+        //             ->where('business_id', function ($query) {
+        //                 $query->select('id')
+        //                     ->from('businesses')
+        //                     ->where('user_id', Auth::id());
+        //             });
+        //     })->with($includes)->get();
+        // } else {
+        //     $data = Product::with($includes)->get();
+        // }
 
         $data = Product::with($includes)->get();
         return response()->json([
@@ -54,6 +72,23 @@ class ProductController extends Controller
                 "data" => null
             ]);
         }
+
+        // if (Auth::user()->role == "Vendedor") {
+        //     $category = \App\Models\Category::where('id', $request->category_id)
+        //         ->where('business_id', function ($query) {
+        //             $query->select('id')
+        //                 ->from('businesses')
+        //                 ->where('user_id', Auth::id());
+        //         })->first();
+
+        //     if (!$category) {
+        //         return response()->json([
+        //             "success" => false,
+        //             "message" => "La categoría no está asociada al usuario",
+        //             "data" => null
+        //         ]);
+        //     }
+        // }
 
         if ($request->file("photo")) {
             $fileName_photo = basename($request->file("photo")->store($this->PHOTO_PATH));
