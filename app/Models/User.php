@@ -12,6 +12,16 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public static $_STATES = [
+        "Activo",
+        "Inactivo"
+    ];
+
+    public static $_ROLES = [
+        "Administrador",
+        "Vendedor",
+        "Cliente"
+    ];
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +29,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        "lastname",
+        "photo",
+        "phone",
+        "address",
+        "state",
+        "role",
         'email',
         'password',
     ];
@@ -33,6 +49,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
     /**
      * The attributes that should be cast.
      *
@@ -41,4 +58,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
