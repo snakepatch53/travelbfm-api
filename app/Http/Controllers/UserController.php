@@ -203,6 +203,7 @@ class UserController extends Controller
 
         if ($request->password) $request->merge(["password" => Hash::make($request->password)]);
 
+        $request->merge(["confirmation_code" => md5($request->email)]);
 
         $data = User::create($request->all());
 
