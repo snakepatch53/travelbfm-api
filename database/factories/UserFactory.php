@@ -22,7 +22,6 @@ class UserFactory extends Factory
 
             'name' => $this->faker->name(),
             'lastname' => $this->faker->lastName(),
-            'photo' => asset("storage/app/public/img/user.png"),
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
             'state' => $this->faker->randomElement(User::$_STATES),
