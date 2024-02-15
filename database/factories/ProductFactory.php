@@ -20,7 +20,6 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->text(30),
-            'photo' => asset("storage/app/public/img/product.png"),
             'price' => $this->faker->randomNumber(),
             'category_id' => Category::factory()
         ];

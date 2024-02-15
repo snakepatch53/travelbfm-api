@@ -22,7 +22,6 @@ class BusinessFactory extends Factory
             "name" => $this->faker->name(),
             "description" => $this->faker->text(40),
             "short_description" => $this->faker->text(20),
-            "logo" => asset("storage/app/public/img/logo.png"),
             "phone" => $this->faker->phoneNumber(),
             "address" => $this->faker->address(),
             "location" => $this->faker->locale(),
