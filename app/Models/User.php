@@ -13,14 +13,14 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     public static $_STATES = [
-        "Activo",
-        "Inactivo"
+        "Inactivo",
+        "Activo"
     ];
 
     public static $_ROLES = [
-        "Administrador",
+        "Cliente",
         "Vendedor",
-        "Cliente"
+        "Administrador"
     ];
 
     protected $fillable = [
@@ -33,6 +33,7 @@ class User extends Authenticatable
         "role",
         'email',
         'password',
+        "confirmation_code"
     ];
 
     protected $hidden = [

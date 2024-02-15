@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('state', User::$_STATES)->default(User::$_STATES[0]);
             $table->enum('role', User::$_ROLES)->default(User::$_ROLES[0]);
             $table->string('email')->unique();
+            $table->string('confirmation_code');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

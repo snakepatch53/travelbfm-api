@@ -50,6 +50,7 @@ Route::group(['prefix' => 'v1'], function () {
 
     // users
     Route::post('login', [UserController::class, 'login']);
+    Route::post('register', [UserController::class, 'register']);
 
     // combos
     Route::get('info-web', [ComboController::class, 'getInfoWeb']);
