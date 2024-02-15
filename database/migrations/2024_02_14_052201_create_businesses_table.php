@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('short_description');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->string('phone');
             $table->string('address');
             $table->string('location');
