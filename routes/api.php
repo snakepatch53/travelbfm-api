@@ -23,6 +23,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('businesses/{id}', [BusinessController::class, 'update']);
     });
 
+
     Route::middleware(['auth:sanctum', 'seller'])->group(function () {
         // categories
         Route::resource('categories', CategoryController::class);
