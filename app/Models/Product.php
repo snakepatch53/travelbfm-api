@@ -17,6 +17,16 @@ class Product extends Model
         'category_id'
     ];
 
+    protected $appends = ["photo_url"];
+
+    public function getPhotoUrlAttribute()
+    {
+
+        if ($this->photo == null) return asset("storage/app/public/img/product.png");
+        return asset("storage/app/public/img_products/" . $this->photo);
+    }
+
+
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -27,6 +27,15 @@ class Business extends Model
         'user_id'
     ];
 
+    protected $appends = ["logo_url"];
+
+    public function getLogoUrlAttribute()
+    {
+
+        if ($this->logo == null) return asset("storage/app/public/img/logo.png");
+        return asset("storage/app/public/img_businesses/" . $this->logo);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
