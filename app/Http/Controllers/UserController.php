@@ -368,6 +368,9 @@ class UserController extends Controller
 
         $user->update($request->all());
 
+        $token = $user->createToken('authToken')->plainTextToken;
+        $user->token = $token;
+
         return response()->json([
             "success" => true,
             "message" => "Recurso actualizado",
