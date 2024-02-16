@@ -36,8 +36,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         // users
         Route::post('logout', [UserController::class, 'logout']);
-        Route::post('update-logued', [UserController::class, 'updateLogued']);
-
+        Route::post('users/update-logued', [UserController::class, 'updateLogued']);
 
         // carts
         Route::resource('carts', CartController::class);
