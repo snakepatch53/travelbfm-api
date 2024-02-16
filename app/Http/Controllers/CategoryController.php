@@ -44,7 +44,7 @@ class CategoryController extends Controller
                 "success" => false,
                 "message" => $validator->errors()->first(),
                 "errors" => $validator->errors(),
-                "data" => $request->all()
+                "data" => null
             ]);
         }
 
@@ -94,7 +94,7 @@ class CategoryController extends Controller
                 "success" => false,
                 "message" => $validator->errors()->first(),
                 "errors" => $validator->errors(),
-                "data" => null
+                "data" => $request->all()
             ]);
         }
 
