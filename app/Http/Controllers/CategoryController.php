@@ -98,7 +98,13 @@ class CategoryController extends Controller
             ]);
         }
 
+        $includes = [];
+        if ($request->query('includeBusiness')) $includes[] = 'business';
+        if ($request->query('includeProducts')) $includes[] = 'products';
+
         $category->update($request->all());
+
+        $category->load($includes);
 
         return response()->json([
             "success" => true,
