@@ -31,7 +31,7 @@ class ComboController extends Controller
     {
         $validator = Validator::make($request->all(),  [
             'phone' => 'required|min:10|max:15',
-            'address' => 'required|min:5',
+            'address' => 'required|min:4',
             'location' => 'required|min:5',
             'comment' => 'min:5',
             'products' => 'required|array',
@@ -42,7 +42,7 @@ class ComboController extends Controller
             'phone.min' => 'El campo teléfono debe tener al menos 10 caracteres',
             'phone.max' => 'El campo teléfono debe tener como máximo 15 caracteres',
             'address.required' => 'El campo dirección es requerido',
-            'address.min' => 'El campo dirección debe tener al menos 5 caracteres',
+            'address.min' => 'El campo dirección debe tener al menos 4 caracteres',
             'location.required' => 'El campo ubicación es requerido',
             'location.min' => 'El campo ubicación debe tener al menos 5 caracteres',
             'comment.min' => 'El campo comentario debe tener al menos 5 caracteres',
