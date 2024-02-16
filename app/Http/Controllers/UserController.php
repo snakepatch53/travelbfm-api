@@ -376,7 +376,7 @@ class UserController extends Controller
             "message" => "Recurso actualizado",
             "errors" => null,
             "data" => $user,
-            "token" => null
+            "token" => $token
         ]);
     }
 
