@@ -17,6 +17,7 @@ class ProductController extends Controller
     {
         $includes = [];
         if ($request->query('includeCategory')) $includes[] = 'category';
+        if ($request->query('includeBusiness')) $includes[] = 'category.business';
         if ($request->query('includeProductCarts')) $includes[] = 'productCarts';
 
         $data = [];

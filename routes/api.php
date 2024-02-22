@@ -49,6 +49,8 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     // PUBLIC ROUTES
+    // carts
+    Route::get('carts/{id}/pdf', [CartController::class, 'showPdf']);
 
     // users
     Route::post('login', [UserController::class, 'login']);

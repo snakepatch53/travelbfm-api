@@ -29,6 +29,18 @@ class UserSeeder extends Seeder
                 'password' => Hash::make("admin"),
                 "confirmation_code" => "123456"
             ]);
+        DB::table("users")
+            ->insert([
+                'name' => "Harold",
+                "lastname" => "Hernández",
+                "phone" => "0980199938",
+                "address" => "Macas - Morona Santiago - Ecuador",
+                "state" => "Activo",
+                "role" => "Administrador",
+                'email' => "harold",
+                'password' => Hash::make("harold12"),
+                "confirmation_code" => "123456"
+            ]);
         User::factory()
             ->count(2)
             ->create();

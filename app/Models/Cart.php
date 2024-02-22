@@ -23,6 +23,19 @@ class Cart extends Model
         'user_id'
     ];
 
+    protected $appends = ['date_str', 'pdf_url'];
+
+    public function getDateStrAttribute()
+    {
+        // formatear como por ejemplo: Lunes 12 de Julio de 2021
+        return $this->created_at->locale('es')->isoFormat('dddd, D [de] MMMM [de] YYYY');
+    }
+
+    public function getPdfUrlAttribute()
+    {
+        return url("/api/v1/carts/{$this->id}/pdf");
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,7 +23,6 @@ class CartController extends Controller
             "data" => $data
         ]);
     }
-
 
     public function store(Request $request)
     {
@@ -66,7 +66,6 @@ class CartController extends Controller
         ]);
     }
 
-
     public function show(Request $request, Cart $cart)
     {
         $includes = [];
@@ -81,6 +80,22 @@ class CartController extends Controller
         ]);
     }
 
+    public function showPdf(Request $request, $id)
+    {
+        $cart = Cart::findOrfail($id);
+
+        $includes = ['user', 'productCarts', 'productCarts.product'];
+
+        $cart = $cart->load($includes)->toArray();
+
+        // return view
+
+        // return response()->json($cart);
+
+        return Pdf::loadView('card-pdf', compact('cart'))
+            ->setPaper('a4', 'portrait')
+            ->stream('cart-' . $cart['id'] . '.pdf');
+    }
 
     public function update(Request $request, Cart $cart)
     {
@@ -124,7 +139,6 @@ class CartController extends Controller
             "token" => null
         ]);
     }
-
 
     public function destroy(Cart $cart)
     {
