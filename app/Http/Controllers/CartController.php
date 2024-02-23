@@ -84,7 +84,7 @@ class CartController extends Controller
     {
         $cart = Cart::findOrfail($id);
 
-        $includes = ['user', 'productCarts', 'productCarts.product'];
+        $includes = ['user', 'productCarts', 'productCarts.product', 'productCarts.product.category', 'productCarts.product.category.business'];
 
         $cart = $cart->load($includes)->toArray();
 

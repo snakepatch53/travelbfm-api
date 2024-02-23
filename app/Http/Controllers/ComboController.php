@@ -7,6 +7,13 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -85,5 +92,28 @@ class ComboController extends Controller
             "errors" => null,
             "data" => $cart
         ]);
+    }
+
+    public function getStrToQr($text)
+    {
+        $img_path = url('./public/img/location.png');
+        $result = Builder::create()
+            ->writer(new PngWriter())
+            ->writerOptions([])
+            ->data("https://www.google.com.ec/maps/place/" . str_replace(' ', '', $text))
+            ->encoding(new Encoding('UTF-8'))
+            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+            ->size(300)
+            ->margin(0)
+            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->logoResizeToHeight(70)
+            ->logoResizeToHeight(70)
+            ->logoPath($img_path)
+            ->labelText('')
+            ->labelFont(new NotoSans(20))
+            ->labelAlignment(new LabelAlignmentCenter())
+            ->validateResult(false)
+            ->build();
+        return response($result->getString())->header('Content-Type', $result->getMimeType());
     }
 }

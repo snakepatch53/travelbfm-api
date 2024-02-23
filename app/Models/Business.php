@@ -27,13 +27,18 @@ class Business extends Model
         'user_id'
     ];
 
-    protected $appends = ["logo_url"];
+    protected $appends = ["logo_url", "location_qr_url"];
 
     public function getLogoUrlAttribute()
     {
 
         if ($this->logo == null) return asset("storage/app/public/img/logo.png");
         return asset("storage/app/public/img_businesses/" . $this->logo);
+    }
+
+    public function getLocationQrUrlAttribute()
+    {
+        return url("api/v1/str-to-qr-img/" . $this->location);
     }
 
     public function user()

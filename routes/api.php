@@ -7,6 +7,13 @@ use App\Http\Controllers\ComboController;
 use App\Http\Controllers\ProductCartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +58,9 @@ Route::group(['prefix' => 'v1'], function () {
     // PUBLIC ROUTES
     // carts
     Route::get('carts/{id}/pdf', [CartController::class, 'showPdf']);
+
+    // combos
+    Route::get('str-to-qr-img/{text}', [ComboController::class, 'getStrToQr']);
 
     // users
     Route::post('login', [UserController::class, 'login']);
