@@ -92,7 +92,7 @@ class CartController extends Controller
 
         // return response()->json($cart);
 
-        return Pdf::loadView('card-pdf', compact('cart'))
+        return Pdf::loadView('cart-pdf', compact('cart'))
             ->setPaper('a4', 'portrait')
             ->stream('cart-' . $cart['id'] . '.pdf');
     }

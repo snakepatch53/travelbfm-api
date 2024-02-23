@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Card #{{ $cart['id'] }}</title>
+    <title>Cart #{{ $cart['id'] }}</title>
     <style>
         * {
             font-family: 'Courier New', Courier, monospace
