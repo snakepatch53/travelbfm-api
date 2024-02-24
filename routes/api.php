@@ -44,6 +44,7 @@ Route::group(['prefix' => 'v1'], function () {
         // users
         Route::post('logout', [UserController::class, 'logout']);
         Route::post('update-logued', [UserController::class, 'updateLogued']);
+        Route::post('exist-session', [UserController::class, 'existSession']);
 
         // carts
         Route::resource('carts', CartController::class);
@@ -56,6 +57,8 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     // PUBLIC ROUTES
+    // Users
+
     // carts
     Route::get('carts/{id}/pdf', [CartController::class, 'showPdf']);
 
@@ -69,6 +72,7 @@ Route::group(['prefix' => 'v1'], function () {
     // combos
     Route::get('info-web', [ComboController::class, 'getInfoWeb']);
 });
+
 
 // Not Found
 Route::fallback(function () {

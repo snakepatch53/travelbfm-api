@@ -32,7 +32,7 @@ class Business extends Model
     public function getLogoUrlAttribute()
     {
 
-        if ($this->logo == null) return asset("storage/app/public/img/logo.png");
+        if ($this->logo == null) return asset("storage/app/public/img/business.png");
         return asset("storage/app/public/img_businesses/" . $this->logo);
     }
 

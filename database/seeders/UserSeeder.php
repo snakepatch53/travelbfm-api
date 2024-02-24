@@ -19,46 +19,77 @@ class UserSeeder extends Seeder
     {
         DB::table("users")
             ->insert([
+                "id" => 1,
                 'name' => "Super",
                 "lastname" => "Administrador",
-                "phone" => "0987654321",
-                "address" => "Calle 123",
-                "state" => "Activo",
-                "role" => "Administrador",
+                "role" => User::$_ROLES[2],
                 'email' => "admin",
-                'password' => Hash::make("admin"),
-                "confirmation_code" => "123456"
+                'password' => Hash::make("admin")
             ]);
         DB::table("users")
             ->insert([
-                'name' => "Harold",
-                "lastname" => "Hernández",
-                "phone" => "0980199938",
-                "address" => "Macas - Morona Santiago - Ecuador",
-                "state" => "Activo",
-                "role" => "Administrador",
-                'email' => "harold",
-                'password' => Hash::make("harold12"),
-                "confirmation_code" => "123456"
+                "id" => 2,
+                'name' => "Administrador",
+                "lastname" => " ",
+                "role" => User::$_ROLES[2],
+                'email' => "travelbfm",
+                'password' => Hash::make("6zrK^#qV#2S1$8Fh")
             ]);
-        User::factory()
-            ->count(2)
-            ->create();
 
-        User::factory()
-            ->count(2)
-            ->hasBusinesses(2)
-            ->create();
-
-        User::factory()
-            ->count(2)
-            ->hasCarts(2)
-            ->create();
-
-        User::factory()
-            ->count(2)
-            ->hasBusinesses(2)
-            ->hasCarts(2)
-            ->create();
+        // User for Business
+        DB::table("users")
+            ->insert([
+                "id" => 3,
+                'name' => "MUSAP",
+                "lastname" => "BAR",
+                "role" => User::$_ROLES[1],
+                'email' => "musap",
+                'password' => Hash::make("passwor")
+            ]);
+        DB::table("users")
+            ->insert([
+                'id' => 4,
+                'name' => "HENDRIX",
+                "lastname" => " ",
+                "role" => User::$_ROLES[1],
+                'email' => "HENDRIX",
+                'password' => Hash::make("password")
+            ]);
+        DB::table("users")
+            ->insert([
+                'id' => 5,
+                'name' => "RONCOS",
+                "lastname" => "RESTAURANT",
+                "role" => User::$_ROLES[1],
+                'email' => "RONCOS",
+                'password' => Hash::make("password")
+            ]);
+        DB::table("users")
+            ->insert([
+                'id' => 6,
+                'name' => "COMIDA RAPIDA",
+                "lastname" => "DOÑA PACHI",
+                "role" => User::$_ROLES[1],
+                'email' => "DOÑAPACHI",
+                'password' => Hash::make("password")
+            ]);
+        DB::table("users")
+            ->insert([
+                'id' => 7,
+                'name' => "NILA",
+                "lastname" => "EMPANADAS",
+                "role" => User::$_ROLES[1],
+                'email' => "NILA",
+                'password' => Hash::make("password")
+            ]);
+        DB::table("users")
+            ->insert([
+                'id' => 8,
+                'name' => "TISHOS",
+                "lastname" => "PIZZA",
+                "role" => User::$_ROLES[1],
+                'email' => "TISHOS",
+                'password' => Hash::make("password")
+            ]);
     }
 }

@@ -134,6 +134,26 @@ class UserController extends Controller
         ]);
     }
 
+    public function existSession()
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                "success" => false,
+                "message" => "No hay sesión iniciada",
+                "errors" => null,
+                "data" => null
+            ]);
+        }
+        return response()->json([
+            "success" => true,
+            "message" => "Sesión iniciada",
+            "errors" => null,
+            "data" => $user
+        ]);
+    }
+
     public function index(Request $request)
     {
         $includes = [];

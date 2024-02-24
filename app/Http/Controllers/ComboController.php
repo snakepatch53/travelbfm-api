@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Business;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Info;
 use App\Models\Product;
 use App\Models\User;
 use Endroid\QrCode\Builder\Builder;
@@ -22,6 +23,9 @@ class ComboController extends Controller
 {
     public function getInfoWeb(Request $request)
     {
+
+
+        $info = Info::all()->first();
         $users = User::all();
         $businesses = Business::all();
         $categories = Category::all();
@@ -31,7 +35,7 @@ class ComboController extends Controller
         return response()->json([
             "success" => true,
             "message" => "Recursos encontrados",
-            "data" => compact('users', 'businesses', 'categories', 'products')
+            "data" => compact('info', 'users', 'businesses', 'categories', 'products')
         ]);
     }
 
