@@ -30,6 +30,11 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        $includes = [];
+        if ($request->query('includeCategory')) $includes[] = 'category';
+        if ($request->query('includeBusiness')) $includes[] = 'category.business';
+        if ($request->query('includeProductCarts')) $includes[] = 'productCarts';
+
         $validator = Validator::make($request->all(),  [
             'name' => 'required|min:3',
             'description' => 'required|min:10',
@@ -85,7 +90,7 @@ class ProductController extends Controller
             "success" => true,
             "message" => "Recurso creado",
             "errors" => null,
-            "data" => $data
+            "data" => $data->load($includes)
         ]);
     }
 
@@ -105,6 +110,11 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $includes = [];
+        if ($request->query('includeCategory')) $includes[] = 'category';
+        if ($request->query('includeBusiness')) $includes[] = 'category.business';
+        if ($request->query('includeProductCarts')) $includes[] = 'productCarts';
+
         $product = Product::find($id);
         if (!$product) {
             return response()->json([
@@ -154,7 +164,7 @@ class ProductController extends Controller
             "success" => true,
             "message" => "Recurso actualizado",
             "errors" => null,
-            "data" => $product,
+            "data" => $product->load($includes),
             "token" => null
         ]);
     }
