@@ -15,6 +15,9 @@ class CartController extends Controller
         $includes = [];
         if ($request->query('includeUser')) $includes[] = 'user';
         if ($request->query('includeProductCarts')) $includes[] = 'productCarts';
+        if ($request->query('includeProductCartsProduct')) $includes[] = 'productCarts.product';
+        if ($request->query('includeProductCartsProductCategory')) $includes[] = 'productCarts.product.category';
+        if ($request->query('includeProductCartsProductCategoryBusiness')) $includes[] = 'productCarts.product.category.business';
 
         $data = Cart::with($includes)->get();
         return response()->json([
@@ -130,6 +133,39 @@ class CartController extends Controller
         }
 
         $cart->update($request->all());
+
+        return response()->json([
+            "success" => true,
+            "message" => "Recurso actualizado",
+            "errors" => null,
+            "data" => $cart,
+            "token" => null
+        ]);
+    }
+
+    public function updateState(Request $request, $id)
+    {
+        $cart = Cart::findOrfail($id);
+        $validator = Validator::make($request->all(),  [
+            "state" => "in:" . implode(",", Cart::$_STATES)
+        ], [
+            "state.in" => "El campo estado debe ser uno de: " . implode(",", Cart::$_STATES)
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                "success" => false,
+                "message" => $validator->errors()->first(),
+                "errors" => $validator->errors(),
+                "data" => null
+            ]);
+        }
+
+        $cart->update(
+            [
+                "state" => $request->state
+            ]
+        );
 
         return response()->json([
             "success" => true,

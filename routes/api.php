@@ -42,6 +42,7 @@ Route::group(['prefix' => 'v1'], function () {
 
         // carts
         Route::resource('carts', CartController::class);
+        Route::post('carts/{id}/update-state', [CartController::class, 'updateState']);
 
         // product_carts
         Route::resource('product_carts', ProductCartController::class);
