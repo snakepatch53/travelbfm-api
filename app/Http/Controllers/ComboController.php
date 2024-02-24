@@ -98,7 +98,7 @@ class ComboController extends Controller
 
     public function getStrToQr($text)
     {
-        $img_path = url('/public/img/location.png');
+        $img_path = asset('/public/img/location.png');
         $result = Builder::create()
             ->writer(new PngWriter())
             ->writerOptions([])
