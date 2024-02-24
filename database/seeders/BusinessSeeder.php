@@ -28,7 +28,7 @@ class BusinessSeeder extends Seeder
                 "short_description" => "Exquisitos platos hechos para ti",
                 "phone" => "0987654321",
                 "address" => "Macas Por El Centro ",
-                "location" => "https://maps.app.goo.gl/YiSZGLXWQyzTK2rH8",
+                "location" => "-2.457071,-78.168099",
                 "link" => "https://marea.pro/musap",
                 "logo" => "3.jpg",
                 "user_id" => 3
@@ -41,7 +41,7 @@ class BusinessSeeder extends Seeder
                 "short_description" => "Cerveza artesanal",
                 "phone" => "0987654321",
                 "address" => "Macas Por El Centro ",
-                "location" => "https://maps.app.goo.gl/YiSZGLXWQyzTK2rH8",
+                "location" => "-2.457071,-78.168099",
                 "link" => "https://marea.pro/hendrix",
                 "logo" => "4.jpg",
                 "user_id" => 4
@@ -54,7 +54,7 @@ class BusinessSeeder extends Seeder
                 "short_description" => "Menú de exquisitos platos",
                 "phone" => "0987654321",
                 "address" => "Macas Por El Centro ",
-                "location" => "https://maps.app.goo.gl/YiSZGLXWQyzTK2rH8",
+                "location" => "-2.457071,-78.168099",
                 "link" => "https://marea.pro/roncos",
                 "logo" => "5.jpg",
                 "user_id" => 5
@@ -67,7 +67,7 @@ class BusinessSeeder extends Seeder
                 "short_description" => "Menú de exquisitos platos",
                 "phone" => "0987654321",
                 "address" => "Macas Por El Centro ",
-                "location" => "https://maps.app.goo.gl/YiSZGLXWQyzTK2rH8",
+                "location" => "-2.457071,-78.168099",
                 "link" => "https://marea.pro/menupachi",
                 "logo" => "6.jpg",
                 "user_id" => 6
@@ -80,7 +80,7 @@ class BusinessSeeder extends Seeder
                 "short_description" => "Relleno de felicidad en cada empanada",
                 "phone" => "0987654321",
                 "address" => "Macas Por El Centro ",
-                "location" => "https://maps.app.goo.gl/YiSZGLXWQyzTK2rH8",
+                "location" => "-2.457071,-78.168099",
                 "link" => "https://marea.pro/nilaempanadas",
                 "logo" => "7.jpg",
                 "user_id" => 7
@@ -93,7 +93,7 @@ class BusinessSeeder extends Seeder
                 "short_description" => "Exquisitos platos hechos para ti",
                 "phone" => "0987654321",
                 "address" => "Macas Por El Centro ",
-                "location" => "https://maps.app.goo.gl/YiSZGLXWQyzTK2rH8",
+                "location" => "-2.457071,-78.168099",
                 "link" => "https://marea.pro/tishospizza",
                 "logo" => "8.jpg",
                 "user_id" => 8
