@@ -74,6 +74,10 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
+        $includes = [];
+        if ($request->query('includeBusiness')) $includes[] = 'business';
+        if ($request->query('includeProducts')) $includes[] = 'products';
+
         $validator = Validator::make($request->all(),  [
             "name" => "required|min:3",
             "description" => "min:5",
@@ -106,7 +110,7 @@ class CategoryController extends Controller
             "success" => true,
             "message" => "Recurso actualizado",
             "errors" => null,
-            "data" => $category,
+            "data" => $category->load($includes),
             "token" => null
         ]);
     }

@@ -309,10 +309,19 @@ class ProductSeeder extends Seeder
         DB::table("products")
             ->insert([
                 "id" => 31,
-                'name' => "COCA COLA PERSONAL",
+                'name' => "COCA COLA DE 1 LITRO",
                 'description' => "COLA",
-                'photo' => "30.jpg",
-                'price' => 1.00,
+                'photo' => "31.jpg",
+                'price' => 2.00,
+                'category_id' => 2
+            ]);
+        DB::table("products")
+            ->insert([
+                "id" => 32,
+                'name' => "COCA COLA DE 2 LITROS",
+                'description' => "COLA",
+                'photo' => "32.jpg",
+                'price' => 3.00,
                 'category_id' => 2
             ]);
     }
