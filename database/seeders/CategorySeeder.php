@@ -27,14 +27,14 @@ class CategorySeeder extends Seeder
                 "id" => 1,
                 'name' => "Comida",
                 'description' => "Comidas rapidas",
-                'business_id' => 3
+                'business_id' => 1
             ]);
         DB::table("categories")
             ->insert([
                 "id" => 2,
                 'name' => "Bebidas",
                 'description' => "Todo tipo de bebidas",
-                'business_id' => 3
+                'business_id' => 1
             ]);
 
         // HENDRIX
@@ -43,14 +43,14 @@ class CategorySeeder extends Seeder
                 "id" => 3,
                 'name' => "Comida",
                 'description' => "Comidas rapidas",
-                'business_id' => 4
+                'business_id' => 2
             ]);
         DB::table("categories")
             ->insert([
                 "id" => 4,
                 'name' => "Bebidas",
                 'description' => "Todo tipo de bebidas",
-                'business_id' => 4
+                'business_id' => 2
             ]);
 
         // RONCOS
@@ -59,21 +59,21 @@ class CategorySeeder extends Seeder
                 "id" => 5,
                 'name' => "Mariscos",
                 'description' => "Mariscos",
-                'business_id' => 5
+                'business_id' => 3
             ]);
         DB::table("categories")
             ->insert([
                 "id" => 6,
                 'name' => "Pastas",
                 'description' => "Pastas",
-                'business_id' => 5
+                'business_id' => 3
             ]);
         DB::table("categories")
             ->insert([
                 "id" => 7,
                 'name' => "Carnes",
                 'description' => "Carnes",
-                'business_id' => 5
+                'business_id' => 3
             ]);
 
         // DOÑA PACHI
@@ -82,33 +82,33 @@ class CategorySeeder extends Seeder
                 "id" => 8,
                 'name' => "Pollo",
                 'description' => "Pollo",
-                'business_id' => 5
+                'business_id' => 4
             ]);
         DB::table("categories")
             ->insert([
                 "id" => 9,
                 'name' => "Menu para niños",
                 'description' => "Menu para niños",
-                'business_id' => 5
+                'business_id' => 4
             ]);
 
-        // TISHOS PIZZA
+        // NILA EMPANADAS
         DB::table("categories")
             ->insert([
                 "id" => 10,
                 'name' => "Comida rapida",
                 'description' => "Comidas rapidas",
-                'business_id' => 6
+                'business_id' => 5
             ]);
         DB::table("categories")
             ->insert([
                 "id" => 11,
                 'name' => "Empanadas",
                 'description' => "Comidas rapidas",
-                'business_id' => 6
+                'business_id' => 5
             ]);
 
-        // NILA EMPANADAS
+        // TISHOS PIZZA
         DB::table("categories")
             ->insert([
                 "id" => 12,
