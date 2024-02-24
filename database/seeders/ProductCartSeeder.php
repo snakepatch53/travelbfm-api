@@ -15,8 +15,8 @@ class ProductCartSeeder extends Seeder
      */
     public function run()
     {
-        ProductCart::factory()
-            ->count(3)
-            ->create();
+        // ProductCart::factory()
+        //     ->count(3)
+        //     ->create();
     }
 }

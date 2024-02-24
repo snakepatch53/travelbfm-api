@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Business;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,8 +20,16 @@ class BusinessController extends Controller
         $includes = [];
         if ($request->query('includeUser')) $includes[] = 'user';
         if ($request->query('includeCategories')) $includes[] = 'categories';
+        if ($request->query('includeProducts')) $includes[] = 'categories.products';
 
-        $data = Business::with($includes)->get();
+        // Restringimos el acceso dependiendo del rol del usuario
+        $data = [];
+        if (Auth::user()->role == User::$_ROLES[1]) {
+            $data = Business::where('user_id', Auth::user()->id)->with($includes)->get();
+        } else {
+            $data = Business::with($includes)->get();
+        }
+
         return response()->json([
             "success" => true,
             "message" => "Recursos encontrados",

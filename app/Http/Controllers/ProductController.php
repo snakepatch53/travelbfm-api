@@ -20,23 +20,6 @@ class ProductController extends Controller
         if ($request->query('includeBusiness')) $includes[] = 'category.business';
         if ($request->query('includeProductCarts')) $includes[] = 'productCarts';
 
-        $data = [];
-
-        // Restringimos el acceso dependiendo del rol del usuario
-        // if (Auth::user()->role == "Vendedor") {
-        //     $data = Product::where('category_id', function ($query) {
-        //         $query->select('id')
-        //             ->from('categories')
-        //             ->where('business_id', function ($query) {
-        //                 $query->select('id')
-        //                     ->from('businesses')
-        //                     ->where('user_id', Auth::id());
-        //             });
-        //     })->with($includes)->get();
-        // } else {
-        //     $data = Product::with($includes)->get();
-        // }
-
         $data = Product::with($includes)->get();
         return response()->json([
             "success" => true,

@@ -23,14 +23,12 @@ class ComboController extends Controller
 {
     public function getInfoWeb(Request $request)
     {
-
-
         $info = Info::all()->first();
         $users = User::all();
         $businesses = Business::all();
         $categories = Category::all();
         //  include category and business. Category have a business_id
-        $products = Product::with('category.business')->get();
+        $products = Product::with(['category', 'category.business', 'productCarts'])->get();
 
         return response()->json([
             "success" => true,

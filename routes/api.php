@@ -7,14 +7,6 @@ use App\Http\Controllers\ComboController;
 use App\Http\Controllers\ProductCartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-use Endroid\QrCode\Builder\Builder;
-use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
-use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
-use Endroid\QrCode\Label\Font\NotoSans;
-use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
-use Endroid\QrCode\Writer\PngWriter;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1'], function () {
@@ -26,12 +18,14 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('users/{id}', [UserController::class, 'update']);
 
         // businesses
-        Route::resource('businesses', BusinessController::class);
+        Route::resource('businesses', BusinessController::class)->except(['index']);
         Route::post('businesses/{id}', [BusinessController::class, 'update']);
     });
 
-
     Route::middleware(['auth:sanctum', 'seller'])->group(function () {
+        // businesses
+        Route::get('businesses', [BusinessController::class, 'index']);
+
         // categories
         Route::resource('categories', CategoryController::class);
 

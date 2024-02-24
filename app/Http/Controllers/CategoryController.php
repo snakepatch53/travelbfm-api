@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -15,7 +17,20 @@ class CategoryController extends Controller
         if ($request->query('includeBusiness')) $includes[] = 'business';
         if ($request->query('includeProducts')) $includes[] = 'products';
 
-        $data = Category::with($includes)->get();
+        // Restringimos el acceso dependiendo del rol del usuario
+        $data = [];
+
+        // Restringimos el acceso dependiendo del rol del usuario
+        if (Auth::user()->role == "Vendedor") {
+            $data = Category::where('business_id', function ($query) {
+                $query->select('id')
+                    ->from('businesses')
+                    ->where('user_id', Auth::user()->id);
+            })->with($includes)->get();
+        } else {
+            $data = Category::with($includes)->get();
+        }
+
         return response()->json([
             "success" => true,
             "message" => "Recursos encontrados",

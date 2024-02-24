@@ -76,7 +76,6 @@ class CategorySeeder extends Seeder
                 'business_id' => 3
             ]);
 
-        // DOÑA PACHI
         DB::table("categories")
             ->insert([
                 "id" => 8,
@@ -92,7 +91,7 @@ class CategorySeeder extends Seeder
                 'business_id' => 4
             ]);
 
-        // NILA EMPANADAS
+        // DOÑA PACHI
         DB::table("categories")
             ->insert([
                 "id" => 10,
@@ -100,6 +99,8 @@ class CategorySeeder extends Seeder
                 'description' => "Comidas rapidas",
                 'business_id' => 5
             ]);
+
+        // NILA EMPANADAS
         DB::table("categories")
             ->insert([
                 "id" => 11,
