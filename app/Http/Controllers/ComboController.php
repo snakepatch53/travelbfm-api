@@ -28,7 +28,7 @@ class ComboController extends Controller
         $businesses = Business::all();
         $categories = Category::all();
         //  include category and business. Category have a business_id
-        $products = Product::with(['category', 'category.business', 'productCarts'])->get();
+        $products = Product::with(['category', 'category.business', 'productCarts'])->orderBy('name', 'asc')->get();
 
         return response()->json([
             "success" => true,
