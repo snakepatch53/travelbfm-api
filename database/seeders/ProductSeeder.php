@@ -225,6 +225,7 @@ class ProductSeeder extends Seeder
                 'price' => 4.00,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 22,
@@ -234,6 +235,7 @@ class ProductSeeder extends Seeder
                 'price' => 7.50,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 23,
@@ -243,6 +245,7 @@ class ProductSeeder extends Seeder
                 'price' => 3.00,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 24,
@@ -252,6 +255,7 @@ class ProductSeeder extends Seeder
                 'price' => 3.00,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 25,
@@ -261,6 +265,7 @@ class ProductSeeder extends Seeder
                 'price' => 3.00,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 26,
@@ -270,6 +275,7 @@ class ProductSeeder extends Seeder
                 'price' => 1.75,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 27,
@@ -279,6 +285,7 @@ class ProductSeeder extends Seeder
                 'price' => 3.75,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 28,
@@ -288,6 +295,7 @@ class ProductSeeder extends Seeder
                 'price' => 1.00,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 29,
@@ -297,6 +305,7 @@ class ProductSeeder extends Seeder
                 'price' => 2.50,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 30,
@@ -306,6 +315,7 @@ class ProductSeeder extends Seeder
                 'price' => 1.00,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 31,
@@ -315,6 +325,7 @@ class ProductSeeder extends Seeder
                 'price' => 2.00,
                 'category_id' => 2
             ]);
+
         DB::table("products")
             ->insert([
                 "id" => 32,
@@ -322,6 +333,36 @@ class ProductSeeder extends Seeder
                 'description' => "COLA",
                 'photo' => "32.jpg",
                 'price' => 3.00,
+                'category_id' => 2
+            ]);
+
+        DB::table("products")
+            ->insert([
+                "id" => 33,
+                'name' => "COCA COLA DE 3 LITROS",
+                'description' => "COLA",
+                'photo' => "33.jpg",
+                'price' => 3.50,
+                'category_id' => 2
+            ]);
+
+        DB::table("products")
+            ->insert([
+                "id" => 34,
+                'name' => "FUZE TEA PERSONAL",
+                'description' => "FUZE TEA",
+                'photo' => "34.jpg",
+                'price' => 1.00,
+                'category_id' => 2
+            ]);
+
+        DB::table("products")
+            ->insert([
+                "id" => 35,
+                'name' => "FUZE TEA PERSONAL",
+                'description' => "FUZE TEA",
+                'photo' => "34.jpg",
+                'price' => 1.00,
                 'category_id' => 2
             ]);
     }

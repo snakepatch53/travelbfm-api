@@ -46,13 +46,17 @@ class CategoryController extends Controller
             ]);
         }
 
+        $includes = [];
+        if ($request->query('includeBusiness')) $includes[] = 'business';
+        if ($request->query('includeProducts')) $includes[] = 'products';
+
         $data = Category::create($request->all());
 
         return response()->json([
             "success" => true,
             "message" => "Recurso creado",
             "errors" => null,
-            "data" => $data
+            "data" => $data->load($includes)
         ]);
     }
 
@@ -74,10 +78,6 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        $includes = [];
-        if ($request->query('includeBusiness')) $includes[] = 'business';
-        if ($request->query('includeProducts')) $includes[] = 'products';
-
         $validator = Validator::make($request->all(),  [
             "name" => "required|min:3",
             "description" => "min:5",
@@ -110,7 +110,7 @@ class CategoryController extends Controller
             "success" => true,
             "message" => "Recurso actualizado",
             "errors" => null,
-            "data" => $category->load($includes),
+            "data" => $category,
             "token" => null
         ]);
     }
