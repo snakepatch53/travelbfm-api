@@ -146,6 +146,13 @@ class CartController extends Controller
     public function updateState(Request $request, $id)
     {
         $cart = Cart::findOrfail($id);
+        $includes = [];
+        if ($request->query('includeUser')) $includes[] = 'user';
+        if ($request->query('includeProductCarts')) $includes[] = 'productCarts';
+        if ($request->query('includeProductCartsProduct')) $includes[] = 'productCarts.product';
+        if ($request->query('includeProductCartsProductCategory')) $includes[] = 'productCarts.product.category';
+        if ($request->query('includeProductCartsProductCategoryBusiness')) $includes[] = 'productCarts.product.category.business';
+
         $validator = Validator::make($request->all(),  [
             "state" => "in:" . implode(",", Cart::$_STATES)
         ], [
@@ -171,7 +178,7 @@ class CartController extends Controller
             "success" => true,
             "message" => "Recurso actualizado",
             "errors" => null,
-            "data" => $cart,
+            "data" => $cart->load($includes),
             "token" => null
         ]);
     }
