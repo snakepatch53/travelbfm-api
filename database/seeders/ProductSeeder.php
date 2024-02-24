@@ -279,5 +279,41 @@ class ProductSeeder extends Seeder
                 'price' => 3.75,
                 'category_id' => 2
             ]);
+        DB::table("products")
+            ->insert([
+                "id" => 28,
+                'name' => "AGUA",
+                'description' => "AGUA VIVANT 600 ML",
+                'photo' => "28.jpg",
+                'price' => 1.00,
+                'category_id' => 2
+            ]);
+        DB::table("products")
+            ->insert([
+                "id" => 29,
+                'name' => "JARRA DE LIMONADA",
+                'description' => "LIMONADA",
+                'photo' => "29.jpg",
+                'price' => 2.50,
+                'category_id' => 2
+            ]);
+        DB::table("products")
+            ->insert([
+                "id" => 30,
+                'name' => "COCA COLA PERSONAL",
+                'description' => "COLA",
+                'photo' => "30.jpg",
+                'price' => 1.00,
+                'category_id' => 2
+            ]);
+        DB::table("products")
+            ->insert([
+                "id" => 31,
+                'name' => "COCA COLA PERSONAL",
+                'description' => "COLA",
+                'photo' => "30.jpg",
+                'price' => 1.00,
+                'category_id' => 2
+            ]);
     }
 }

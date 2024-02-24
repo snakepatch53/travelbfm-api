@@ -28,14 +28,12 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(),  [
             "name" => "required|min:3",
-            "description" => "min:10",
-            "icon" => "min:5",
+            "description" => "min:5",
             "business_id" => "required|exists:businesses,id",
         ], [
             "name.required" => "El campo nombre es requerido",
             "name.min" => "El campo nombre debe tener al menos 3 caracteres",
-            "description.min" => "El campo descripción debe tener al menos 10 caracteres",
-            "icon.min" => "El campo icono debe tener al menos 5 caracteres",
+            "description.min" => "El campo descripción debe tener al menos 5 caracteres",
             "business_id.required" => "El campo negocio es requerido",
             "business_id.exists" => "El business no existe"
         ]);
