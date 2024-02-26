@@ -23,7 +23,7 @@ class Cart extends Model
         'user_id'
     ];
 
-    protected $appends = ['date_str', 'pdf_url'];
+    protected $appends = ['date_str', 'pdf_url', 'pdf_seller_url'];
 
     public function getDateStrAttribute()
     {
@@ -34,6 +34,11 @@ class Cart extends Model
     public function getPdfUrlAttribute()
     {
         return url("/api/v1/carts/{$this->id}/pdf");
+    }
+
+    public function getPdfSellerUrlAttribute()
+    {
+        return url("/api/v1/carts/{$this->id}/seller_id/");
     }
 
     public function user()

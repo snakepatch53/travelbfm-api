@@ -56,6 +56,7 @@ Route::group(['prefix' => 'v1'], function () {
 
     // carts
     Route::get('carts/{id}/pdf', [CartController::class, 'showPdf']);
+    Route::get('carts/{cart_id}/seller_id/{id}', [CartController::class, 'showPdfSeller']);
 
     // combos
     Route::get('str-to-qr-img/{text}', [ComboController::class, 'getStrToQr']);

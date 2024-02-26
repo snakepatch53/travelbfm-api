@@ -89,6 +89,20 @@
             </td>
         </tr>
     </table>
+    <h3>NEGOCIO</h3>
+    <table>
+        <tr>
+            <td style="text-align:left;">
+                <p><b>Nombre:</b>{{ $seller['name'] }}</p>
+                <p><b>Dirección:</b>{{ $seller['address'] }}</p>
+                <p><b>Teléfono:</b>{{ $seller['phone'] }}</p>
+            </td>
+            <td style="text-align:right">
+                <img src="{{ $cart['product_carts'][0]['product']['category']['business']['location_qr_url'] }}"
+                    width="130" />
+            </td>
+        </tr>
+    </table>
     <h3>PRODUCTOS</h3>
     <table class="table-products">
         <thead>
@@ -96,7 +110,6 @@
                 <th>FOTO</th>
                 <th>NOMBRE</th>
                 <th>DESCRIPCIÓN</th>
-                <th>NEGOCIO</th>
                 <th>PRECIO</th>
                 <th>CANTIDAD</th>
                 <th>SUBTOTAL</th>
@@ -115,14 +128,13 @@
                     </td>
                     <td>{{ $product_cart['product']['name'] }}</td>
                     <td>{{ $product_cart['product']['description'] }}</td>
-                    <td>{{ $product_cart['product']['category']['business']['name'] }}</td>
                     <td>${{ $product_cart['price'] }}</td>
                     <td>{{ $product_cart['quantity'] }}</td>
                     <td>${{ $subtotal }}</td>
                 </tr>
             @endforeach
             <tr>
-                <td colspan="6"><b>TOTAL:</b></td>
+                <td colspan="5"><b>TOTAL:</b></td>
                 <td style="font-size:1.2rem;">${{ $total }}</td>
             </tr>
         </tbody>

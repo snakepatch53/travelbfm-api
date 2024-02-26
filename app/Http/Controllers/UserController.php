@@ -272,8 +272,7 @@ class UserController extends Controller
             "address" => "required|min:5|max:250",
             "state" => "in:" . implode(",", User::$_STATES),
             "role" => "in:" . implode(",", User::$_ROLES),
-            "email" => "required|email|unique:users,email," . $id,
-            "password" => "min:8"
+            "email" => "required|email|unique:users,email," . $id
         ], [
             "name.required" => "El campo nombre es requerido",
             "name.min" => "El campo nombre debe tener al menos 3 caracteres",

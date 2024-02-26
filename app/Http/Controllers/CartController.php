@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Business;
 use App\Models\Cart;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -89,13 +90,58 @@ class CartController extends Controller
 
         $includes = ['user', 'productCarts', 'productCarts.product', 'productCarts.product.category', 'productCarts.product.category.business'];
 
-        $cart = $cart->load($includes)->toArray();
+        // order by seller
+        $cart = $cart->load($includes);
 
+        // reorder
+        $product_carts = $cart->productCarts->sortBy(function ($productCart) {
+            return $productCart->product->category->business_id;
+        });
+        $product_carts = $product_carts->toArray();
         // return view
+        $cart = $cart->toArray();
 
-        // return response()->json($cart);
+        return Pdf::loadView('cart-pdf', compact('cart', 'product_carts'))
+            ->setPaper('a4', 'portrait')
+            ->stream('cart-' . $cart['id'] . '.pdf');
+    }
 
-        return Pdf::loadView('cart-pdf', compact('cart'))
+    public function showPdfSeller(Request $request, $cart_id, $seller_id)
+    {
+        $cart = Cart::findOrfail($cart_id);
+
+        $includes = ['user', 'productCarts', 'productCarts.product', 'productCarts.product.category', 'productCarts.product.category.business'];
+
+        $cart = $cart->load($includes);
+
+        $existSeller = false;
+        foreach ($cart->productCarts as $productCart) {
+            if ($productCart->product->category->business_id == $seller_id) {
+                $existSeller = true;
+                break;
+            }
+        }
+        if (!$existSeller) {
+            return response()->json([
+                "success" => false,
+                "message" => "El vendedor no existe en el carrito",
+                "errors" => null,
+                "data" => null
+            ]);
+        }
+
+        $seller = Business::findOrfail($seller_id);
+        $seller = $seller->toArray();
+
+        // filter products by seller
+        $product_carts = $cart->productCarts->filter(function ($productCart) use ($seller_id) {
+            return $productCart->product->category->business_id == $seller_id;
+        });
+
+
+        $product_carts = $product_carts->toArray();
+        $cart = $cart->toArray();
+        return Pdf::loadView('cart-pdf-seller', compact('cart', 'product_carts', 'seller'))
             ->setPaper('a4', 'portrait')
             ->stream('cart-' . $cart['id'] . '.pdf');
     }

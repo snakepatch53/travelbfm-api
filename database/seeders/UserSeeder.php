@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             ->insert([
                 "id" => 10000,
                 'name' => "Cliente",
-                "lastname" => "Harold xddd",
+                "lastname" => "Test",
                 'email' => "client",
                 'password' => Hash::make("client")
             ]);
